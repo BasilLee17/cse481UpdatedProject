@@ -12,7 +12,6 @@ export default function GroceryListScreen ({ route, navigation }) {
         {text: 'almonds', key: 1},
         {text: 'bread', key: 2},
         {text: 'milk', key: 3},
-        {text: 'pork', key: 4}
     ]);
 
     const[selected, setSelected] = useState ([
@@ -31,7 +30,7 @@ export default function GroceryListScreen ({ route, navigation }) {
         },
         list: {
             flex: 1,
-            marginTop: 0,
+            marginTop: 20,
         }
     });
 

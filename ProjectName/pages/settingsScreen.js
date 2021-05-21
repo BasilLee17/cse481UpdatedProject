@@ -4,20 +4,17 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-native';
 
 import Header from './header';
-import MotivationSlider from './motivationSlider';
 
 export default function SettingsScreen() {
 
     const styles = StyleSheet.create({
-
     });
 
 
     return (
         <View style={styles.container}>
             <Header headerTitle="Settings" />
-            <MotivationSlider />
-            
+            <Text> TODO: HAVE A SETTINGS SCREEN!</Text>
         </View>
     );
 };
