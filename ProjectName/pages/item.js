@@ -3,6 +3,8 @@ import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'rea
 // https://www.npmjs.com/package/react-native-tag-select
 import { TagSelect } from 'react-native-tag-select';
 import Swipeout from 'react-native-swipeout';
+import Checkbox from './checkbox';
+
 
 export default function Item (props) {
 
@@ -20,9 +22,11 @@ export default function Item (props) {
             fontWeight: 'bold',
             flexDirection: 'column',
             flex: 1,
+            margin: 5,
         },
         container: {
-            padding: 20,
+            paddingTop: 5,
+            paddingHorizontal: 20,
             margin: 5,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
@@ -37,34 +41,8 @@ export default function Item (props) {
         tagItem: {
           padding: 5,
         }
+        
     });
-
-    // https://stackoverflow.com/questions/31889921/how-to-implement-radio-button-in-react-native
-    const RadioButton = (props) => {
-
-        return (
-            <View style={[{
-              height: 24,
-              width: 24,
-              borderRadius: 12,
-              borderWidth: 2,
-              borderColor: '#170312',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }, props.style]}>
-              {
-                props.checked ?
-                  <View style={{
-                    height: 12,
-                    width: 12,
-                    borderRadius: 6,
-                    backgroundColor: '#170312',
-                  }}/>
-                  : null
-              }
-            </View>
-        );
-      }
 
     let swipeoutBtns = [
             {
@@ -88,7 +66,7 @@ export default function Item (props) {
             }
             setChecked(!checked)
             }}>
-            <RadioButton checked={checked}/>
+            <Checkbox checked={checked}/>
           </TouchableOpacity>
           <View style={styles.item}>
               <Text style={styles.text}>  {props.item.text}</Text>
