@@ -8,13 +8,15 @@ import Header from './header';
 export default function SettingsScreen() {
 
     const styles = StyleSheet.create({
+
     });
 
 
     return (
         <View style={styles.container}>
             <Header headerTitle="Settings" />
-            <Text> TODO: HAVE A SETTINGS SCREEN!</Text>
+            <Text> My food restrictions: blabla</Text>
+            
         </View>
     );
 };

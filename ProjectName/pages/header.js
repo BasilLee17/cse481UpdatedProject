@@ -11,8 +11,10 @@ export default function Header (props) {
         },
         title: {
             textAlign: 'center',
+            fontSize: 30,
             fontWeight: 'bold',
-            fontSize: 30
+            letterSpacing: 0.25,
+            color: 'black',
 
         }
     });
