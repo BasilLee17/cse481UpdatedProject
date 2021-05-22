@@ -12,12 +12,21 @@ export default function SettingsScreen() {
 
     });
 
+    // for motivation level:
+    const[motivationLevel, setMotivationLevel] = useState (1)
+    const motivationLevelHandler = (value) => {
+        setMotivationLevel(value);
+    };
+
+
 
     return (
         <View style={styles.container}>
             <Header headerTitle="Settings" />
-            <MotivationSlider />
-            
+            <ScrollView>
+            <MotivationSlider currentLevel={motivationLevel} changeHandler={ motivationLevelHandler }/>
+            </ScrollView>
+            <Text></Text>
         </View>
     );
 };

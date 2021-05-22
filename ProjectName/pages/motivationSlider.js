@@ -3,9 +3,7 @@ import { StyleSheet, Text, View, } from 'react-native';
 import Slider from '@react-native-community/slider';
 
 
-export default function MotivationSlider () {
-
-    const [motivation, setMotivation] = useState(1);
+export default function MotivationSlider (props) {
 
     const descriptions = {
         1 : "I will put in the effor where it's easy.",
@@ -35,16 +33,16 @@ export default function MotivationSlider () {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.subtitle}> My Motivation Level: {motivation}</Text>
+            <Text style={styles.subtitle}> My Motivation Level: {props.currentLevel}</Text>
             <Slider style={styles.slider}
                 step={1}
                 minimumValue={1}
                 maximumValue={3}
                 minimumTrackTintColor="green"
                 maximumTrackTintColor="grey"
-                onValueChange={value => setMotivation(value)}
+                onValueChange={value => props.changeHandler(value)}
             />
-            <Text style={styles.subtitle}>{descriptions[motivation]}</Text>
+            <Text style={styles.subtitle}>{descriptions[props.currentLevel]}</Text>
       </View>
     )
 }
