@@ -22,8 +22,9 @@ export default function Item (props) {
             flex: 1,
         },
         container: {
-            padding: 20,
-            margin: 5,
+            padding: 10,
+            paddingBottom: 0,
+            margin: 1,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
         },
