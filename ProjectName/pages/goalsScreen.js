@@ -79,7 +79,7 @@ const GoalsScreen = ({route, navigation}) => {
 
   return (
       <View style={styles.container}>
-        <Header headerTitle="My Goals" />
+        <Header headerTitle="Sustainable Alternatives" />
         <View style={styles.content}>
           <FlatList style={styles.list}
             data={flatListItems}

@@ -25,9 +25,9 @@ export default function Item (props) {
             margin: 5,
         },
         container: {
-            paddingTop: 5,
-            paddingHorizontal: 20,
-            margin: 5,
+            paddingBottom: 0,
+            padding: 10,
+            margin: 1,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
         },
