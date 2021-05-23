@@ -30,7 +30,18 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-      <Tab.Navigator>
+    <Tab.Navigator 
+    // lol I cannot get the icon thing to work... will only be changing fonts for now
+    tabBarOptions={{
+      activeTintColor: 'green',
+      inactiveTintColor: 'gray',
+      labelStyle: {
+        textAlign: 'center',
+        fontSize: 20,
+        margin: 10,
+        padding: 0,
+      },
+  }}>
         <Tab.Screen
           name="Home"
           component={GroceryListScreenNested}

@@ -47,11 +47,13 @@ const GoalsScreen = ({route, navigation}) => {
           },
           content: {
               flex: 1,
-              padding: 20,
+              marginTop: 20,
+              marginHorizontal: 20,
+              //padding: 20,
           },
           list: {
               flex: 1,
-              marginTop: 20,
+              marginTop: 10,
           }
       });
 
@@ -77,7 +79,7 @@ const GoalsScreen = ({route, navigation}) => {
 
   return (
       <View style={styles.container}>
-        <Header headerTitle="Sustainable Alternatives" />
+        <Header headerTitle="My Goals" />
         <View style={styles.content}>
           <FlatList style={styles.list}
             data={flatListItems}
