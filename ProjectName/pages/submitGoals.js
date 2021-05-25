@@ -14,7 +14,7 @@ export default function SubmitGoal({ submitHandler }) {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 10,
-            marginHorizontal: 20,
+            marginHorizontal: 10,
             marginBottom: 20,
             borderRadius: 10,
             elevation: 3,

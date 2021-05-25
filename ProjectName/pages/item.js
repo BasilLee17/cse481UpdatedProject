@@ -25,10 +25,15 @@ export default function Item (props) {
             margin: 1,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
+            
         },
         swipeout: {
                   margin: 5,
                   backgroundColor: '#EFE7E6',
+                  borderStyle: 'dashed',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: 'pink'
         },
 
         // just so that nothing happens when the tag is clicked??

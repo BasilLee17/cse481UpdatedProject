@@ -28,6 +28,10 @@ export default function Goal (props) {
             margin:5,
             backgroundColor: '#d5ebd8',
             flexDirection: 'row',
+            borderStyle: 'dashed',
+            borderWidth: 1,
+            borderRadius: 10,
+            borderColor: '#28965A'
         }
     });
 
