@@ -5,13 +5,13 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 export default function Header (props) {
     const styles = StyleSheet.create({
         header: {
-            height: 80,
-            paddingTop: 20,
+            height: 40,
+            paddingTop: 0,
             backgroundColor: '#ADFFAD'
         },
         title: {
             textAlign: 'center',
-            fontSize: 30,
+            fontSize: 25,
             fontWeight: 'bold',
             letterSpacing: 0.25,
             color: 'black',

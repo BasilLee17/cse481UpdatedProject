@@ -8,6 +8,7 @@ export default function AddItem({ submitHandler }) {
     const styles = StyleSheet.create({
         container: {
             paddingHorizontal: 10,
+            marginBottom: 10,
         },
         newItem: {
             fontSize: 25,
@@ -15,7 +16,7 @@ export default function AddItem({ submitHandler }) {
         button: {
             // position
             position: 'absolute',
-            bottom:10,
+            bottom:0,
             right:10,
             // style
             alignItems: 'center',
