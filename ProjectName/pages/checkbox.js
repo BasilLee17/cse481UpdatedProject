@@ -8,7 +8,7 @@ export default function Checkbox (props) {
                   height: 24,
                   width: 24,
                   // with this line of code - radio button; without it - checkbox
-                  //borderRadius: 12,
+                  borderRadius: 6,
                   borderWidth: 2,
                   borderColor: '#170312',
                   alignItems: 'center',
@@ -20,7 +20,7 @@ export default function Checkbox (props) {
                       <View style={{
                         height: 12,
                         width: 12,
-                        //borderRadius: 6,
+                        borderRadius: 3,
                         backgroundColor: '#170312',
                       }}/>
                       : null
