@@ -9,12 +9,7 @@ import Checkbox from './checkbox';
 export default function Item (props) {
 
     // organic, fair-trade, cold-pressed, local
-    const data = [
-          { id: 1, label: 'organic' },
-          { id: 2, label: 'fair-trade' },
-          { id: 3, label: 'cold-pressed' },
-          { id: 4, label: 'local' }
-        ];
+    //const [data, setData] = useState(props.item.tags);
 
     const styles = StyleSheet.create({
         text: {
@@ -35,11 +30,19 @@ export default function Item (props) {
                   margin: 5,
                   backgroundColor: '#EFE7E6',
         },
+
+        // just so that nothing happens when the tag is clicked??
         tagLabel: {
           fontSize: 12,
+          color: 'black',
+          //backgroundColor: 'white',
         },
         tagItem: {
           padding: 5,
+          shadowColor: 'green',
+          backgroundColor: 'white',
+          borderColor: 'white',
+          marginLeft: 10,
         }
         
     });
@@ -72,8 +75,11 @@ export default function Item (props) {
               <Text style={styles.text}>  {props.item.text}</Text>
               <TagSelect
                         itemStyle={styles.tagItem}
+                        itemStyleSelected={styles.tagItem}
                         itemLabelStyle={styles.tagLabel}
-                        data={data}
+                        itemLabelStyleSelected={styles.tagLabel}
+                        data={props.item.tags}
+                        onItemPress={null}
                         ref={(tag) => {
                           setTag(tag)
                         }}

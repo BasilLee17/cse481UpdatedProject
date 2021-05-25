@@ -34,7 +34,6 @@ export default function Goal (props) {
       const [checked, setChecked] = useState(false);
 
       const GoalText = (props) => {
-
         return (
           <View>
           <Text style={styles.title}>{props.goal.rec}</Text>

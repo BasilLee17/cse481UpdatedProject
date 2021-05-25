@@ -9,10 +9,10 @@ import SubmitGroceryList from './submitGroceryList';
 
 export default function GroceryListScreen ({ route, navigation }) {
     const [list, setList] = useState([
-        {text: 'almonds', key: 1},
-        {text: 'bread', key: 2},
-        {text: 'milk', key: 3},
-        {text: 'pork', key: 4}
+        {text: 'almonds', tags: ['organic'], key: 1},
+        {text: 'bread', tags: [], key: 2},
+        {text: 'milk', tags: [], key: 3},
+        {text: 'pork', tags: [], key: 4}
     ]);
 
     const[selected, setSelected] = useState ([
@@ -35,10 +35,11 @@ export default function GroceryListScreen ({ route, navigation }) {
         }
     });
 
-    const submitHandler = (itemName) => {
+    const submitHandler = (itemName, itemTags) => {
+        console.log(itemTags);
         setList((prevList) => {
             return [
-                {text: itemName, key: Math.random().toString()},
+                {text: itemName, tags: itemTags, key: Math.random().toString()},
                 ...prevList];
         })
     };
