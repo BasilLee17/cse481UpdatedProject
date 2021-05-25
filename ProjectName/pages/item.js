@@ -77,7 +77,9 @@ export default function Item (props) {
             <Checkbox checked={checked}/>
           </TouchableOpacity>
           <View style={styles.item}>
-              <Text style={styles.text}>  {props.item.text}</Text>
+              <Text style={[styles.text, checked ?
+    {textDecorationLine: 'line-through', textDecorationStyle: 'solid'} 
+    : {textDecorationLine:'none',}]}>  {props.item.text}</Text>
               <TagSelect
                         itemStyle={styles.tagItem}
                         itemStyleSelected={styles.tagItem}
