@@ -18,9 +18,10 @@ export default function Item (props) {
             flexDirection: 'column',
             flex: 1,
             margin: 5,
+            marginLeft: 10,
         },
         container: {
-            paddingBottom: 0,
+            //paddingBottom: 0,
             padding: 10,
             margin: 1,
             backgroundColor: '#EFE7E6',
@@ -47,7 +48,7 @@ export default function Item (props) {
           shadowColor: 'green',
           backgroundColor: 'white',
           borderColor: 'white',
-          marginLeft: 10,
+          marginLeft: 15,
         }
         
     });
@@ -77,9 +78,10 @@ export default function Item (props) {
             <Checkbox checked={checked}/>
           </TouchableOpacity>
           <View style={styles.item}>
-              <Text style={[styles.text, checked ?
-    {textDecorationLine: 'line-through', textDecorationStyle: 'solid'} 
-    : {textDecorationLine:'none',}]}>  {props.item.text}</Text>
+              <Text style={[styles.text, 
+                            checked ?
+                              {textDecorationLine: 'line-through', textDecorationStyle: 'solid'} 
+                            : {textDecorationLine:'none',}]}> {props.item.text} </Text>
               <TagSelect
                         itemStyle={styles.tagItem}
                         itemStyleSelected={styles.tagItem}
