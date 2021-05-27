@@ -22,7 +22,8 @@ export default function Item (props) {
         },
         container: {
             //paddingBottom: 0,
-            padding: 10,
+            padding: 1,
+            paddingLeft: 10,
             margin: 1,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
