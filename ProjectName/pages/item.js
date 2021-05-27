@@ -66,7 +66,7 @@ export default function Item (props) {
 
     return (
     <Swipeout style={styles.swipeout} right={swipeoutBtns}>
-        <View style={styles.container}>
+        <View style={[styles.container, checked? {backgroundColor: 'oldlace' ,}: {backgroundColor: '#EFE7E6'}]}>
           <TouchableOpacity onPress={()=>{
             if (!checked) {
               props.selectHandler(props.item.key);

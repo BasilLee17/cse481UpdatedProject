@@ -6,6 +6,7 @@ import AddItem from './addItem';
 import Header from './header';
 import Item from './item';
 import SubmitGroceryList from './submitGroceryList';
+import DeleteItems from './deleteItems';
 
 export default function GroceryListScreen ({ route, navigation }) {
     const [list, setList] = useState([
@@ -71,15 +72,36 @@ export default function GroceryListScreen ({ route, navigation }) {
         navigation.navigate("Goals", unselectedItems);
     };
 
+    const deleteCheckedItemsHandler = () => {
+        let selectedKeys = selected.map(a => a.key);
+        setList((prevList) => {
+            return prevList.filter(current => !(selectedKeys.includes(current.key)));
+        });
+    };
+
+    const deleteAllItemsHandler = () => {
+        let selectedKeys = selected.map(a => a.key);
+        setList((prevList) => {
+            return [];
+        });
+    };
+
     return (
         <View style={styles.container}>
             <Header headerTitle="My Grocery List" />
             <View style={styles.content}>
                 <AddItem submitHandler={ submitHandler } />
-                <FlatList style={styles.list}
+                <FlatList 
+                    style={styles.list}
                     data={list}
                     renderItem={({item}) => (
                     <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}
+                    ListFooterComponent={() => 
+                    <View style={{ flexDirection: "row" }}>
+                    <DeleteItems buttonContent='Clear Checked Items' deleteItemsHandler={ deleteCheckedItemsHandler }/>
+                    <DeleteItems buttonContent='Clear All' deleteItemsHandler={ deleteAllItemsHandler }/>
+                    </View>
+                    }
                 />
                 <SubmitGroceryList submitHandler={ submitGroceryListHandler }/>
             </View>

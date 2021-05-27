@@ -10,8 +10,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GroceryListScreen from './pages/groceryListScreen';
 import GoalsScreen from './pages/goalsScreen';
-import TreeScreen from './pages/treeScreen';
-import SettingsScreen from './pages/settingsScreen';
+//import TreeScreen from './pages/treeScreen';
+//import SettingsScreen from './pages/settingsModal';
 
 // https://reactnavigation.org/docs/stack-navigator/
 const Stack = createStackNavigator();
@@ -24,7 +24,7 @@ function GroceryListScreenNested() {
       </Stack.Navigator>
     );
 }
-
+/*
 // https://reactnavigation.org/docs/tab-based-navigation
 const Tab = createBottomTabNavigator();
 
@@ -60,11 +60,11 @@ function MyTabs() {
       </Tab.Navigator>
   );
 };
-
+*/
 export default function App() {
     return (
         <NavigationContainer>
-            <MyTabs />
+            <GroceryListScreenNested />
         </NavigationContainer>
     )
 }

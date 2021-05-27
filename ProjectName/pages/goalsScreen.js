@@ -3,11 +3,12 @@
 // Screen to view all the user*/
 
 import React, {useState, useEffect} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View, Pressable} from 'react-native';
 import Header from './header';
 import {openDatabase} from 'react-native-sqlite-storage';
 import SubmitGoals from './submitGoals';
 import Goal from './goal';
+import MotivationSlider from './motivationSlider';
 
 // Connction to access the pre-populated user_db.db
 const db = openDatabase({name: 'test2.db', createFromLocation: 1});
@@ -54,7 +55,15 @@ const GoalsScreen = ({route, navigation}) => {
           list: {
               flex: 1,
               marginTop: 10,
-          }
+          },
+          button: {
+            borderRadius: 20,
+            padding: 10,
+            elevation: 2
+          },
+          buttonOpen: {
+            backgroundColor: "#F194FF",
+          },
       });
 
     const selectGoalHandler = (goalKey) => {
@@ -77,9 +86,26 @@ const GoalsScreen = ({route, navigation}) => {
             navigation.navigate("Grocery List", selectedGoals);
     };
 
+
+    // for motivation level:
+    const[motivationLevel, setMotivationLevel] = useState (1)
+    const motivationLevelHandler = (value) => {
+        setMotivationLevel(value);
+    };
+    // todo
+    const [modalVisible, setModalVisible] = useState(false);
+
+
   return (
       <View style={styles.container}>
         <Header headerTitle="Sustainable Alternatives" />
+        <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+        >
+          <Text style={styles.textStyle}>Settings</Text>
+        </Pressable>
+        <MotivationSlider currentLevel={motivationLevel} changeHandler={ setMotivationLevel } visibility={modalVisible} visibilityHandler={ setModalVisible }/>
         <View style={styles.content}>
           <FlatList style={styles.list}
             data={flatListItems}
