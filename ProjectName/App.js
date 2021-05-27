@@ -10,8 +10,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import GroceryListScreen from './pages/groceryListScreen';
 import GoalsScreen from './pages/goalsScreen';
-//import TreeScreen from './pages/treeScreen';
-//import SettingsScreen from './pages/settingsModal';
+import { LogBox } from 'react-native';
+
+
+LogBox.ignoreLogs(['Warning: componentWillReceiveProps']); // Ignore log notification by message
+LogBox.ignoreLogs(['Warning: componentWillMount']);
 
 // https://reactnavigation.org/docs/stack-navigator/
 const Stack = createStackNavigator();
