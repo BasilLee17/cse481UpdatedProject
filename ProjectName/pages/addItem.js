@@ -104,7 +104,7 @@ export default function AddItem({ submitHandler }) {
                     initialText={tagText}
                     textInputProps={{
                         placeholderTextColor: '#D6D6D6',
-                        placeholder: 'enter ur tag + space!',
+                        placeholder: 'Enter your tag + space! Or tap a tag to delete.',
                     }}
                     inputStyle={styles.tagInput}
                     initialTags={tags}
