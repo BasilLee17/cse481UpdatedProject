@@ -47,13 +47,11 @@ export default function MotivationSlider (props) {
           button: {
             borderRadius: 20,
             padding: 10,
-            elevation: 2
-          },
-          buttonOpen: {
-            backgroundColor: "#F194FF",
+            elevation: 2,
+            margin: 15,
           },
           buttonClose: {
-            backgroundColor: "#2196F3",
+            backgroundColor: "#28965A",
           },
           textStyle: {
             color: "white",

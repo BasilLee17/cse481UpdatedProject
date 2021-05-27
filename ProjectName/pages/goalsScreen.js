@@ -67,7 +67,7 @@ const GoalsScreen = ({route, navigation}) => {
             elevation: 2
           },
           buttonOpen: {
-            backgroundColor: "#F194FF",
+            backgroundColor: "#28965A",
           },
           bottonText: {
             color: "white",
