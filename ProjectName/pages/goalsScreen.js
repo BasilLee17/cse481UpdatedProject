@@ -45,6 +45,7 @@ const GoalsScreen = ({route, navigation}) => {
           container: {
               flex: 1,
               backgroundColor: '#fff',
+              justifyContent: "center",
           },
           content: {
               flex: 1,
@@ -57,12 +58,21 @@ const GoalsScreen = ({route, navigation}) => {
               marginTop: 10,
           },
           button: {
+            position: 'absolute',
+            top:45,
+            right:5,
+            marginBottom: 5,
             borderRadius: 20,
             padding: 10,
             elevation: 2
           },
           buttonOpen: {
             backgroundColor: "#F194FF",
+          },
+          bottonText: {
+            color: "white",
+            fontWeight: "bold",
+            textAlign: "center"
           },
       });
 
@@ -89,9 +99,6 @@ const GoalsScreen = ({route, navigation}) => {
 
     // for motivation level:
     const[motivationLevel, setMotivationLevel] = useState (1)
-    const motivationLevelHandler = (value) => {
-        setMotivationLevel(value);
-    };
     // todo
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -100,10 +107,10 @@ const GoalsScreen = ({route, navigation}) => {
       <View style={styles.container}>
         <Header headerTitle="Sustainable Alternatives" />
         <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => setModalVisible(true)}
         >
-          <Text style={styles.textStyle}>Settings</Text>
+          <Text style={styles.bottonText}>Settings</Text>
         </Pressable>
         <MotivationSlider currentLevel={motivationLevel} changeHandler={ setMotivationLevel } visibility={modalVisible} visibilityHandler={ setModalVisible }/>
         <View style={styles.content}>
