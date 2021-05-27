@@ -3,7 +3,7 @@
 // Screen to view all the user*/
 
 import React, {useState, useEffect} from 'react';
-import {FlatList, StyleSheet, Text, View, Pressable} from 'react-native';
+import {FlatList, StyleSheet, Text, View, Pressable, Image} from 'react-native';
 import Header from './header';
 import {openDatabase} from 'react-native-sqlite-storage';
 import SubmitGoals from './submitGoals';
@@ -74,6 +74,11 @@ const GoalsScreen = ({route, navigation}) => {
             fontWeight: "bold",
             textAlign: "center"
           },
+          icon: {
+            width: 25,
+            height: 25,
+            resizeMode: 'center'
+          },
       });
 
     const selectGoalHandler = (goalKey) => {
@@ -110,7 +115,8 @@ const GoalsScreen = ({route, navigation}) => {
           style={[styles.button, styles.buttonOpen]}
           onPress={() => setModalVisible(true)}
         >
-          <Text style={styles.bottonText}>Settings</Text>
+          <Image style={styles.icon}
+                 source={require('../img/settings.png')}/>
         </Pressable>
         <MotivationSlider currentLevel={motivationLevel} changeHandler={ setMotivationLevel } visibility={modalVisible} visibilityHandler={ setModalVisible }/>
         <View style={styles.content}>
