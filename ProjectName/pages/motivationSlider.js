@@ -64,6 +64,8 @@ export default function MotivationSlider (props) {
           },
     });
 
+    const [motivationLevel, setMotivationLevel] = useState(global.motivationLevel);
+
     return (
         <View style={styles.container}>
             <Modal
@@ -75,17 +77,17 @@ export default function MotivationSlider (props) {
                 }}
             >
                 <View style={styles.modalView}>
-                    <Text style={styles.subtitle}> My Motivation Level: {props.currentLevel}</Text>
+                    <Text style={styles.subtitle}> My Motivation Level: {motivationLevel}</Text>
                     <Slider style={styles.slider}
                     step={1}
                     minimumValue={1}
                     maximumValue={3}
                     minimumTrackTintColor="green"
                     maximumTrackTintColor="grey"
-                    value={props.currentLevel}
-                    onValueChange={value => props.changeHandler(value)}
+                    value={global.motivationLevel}
+                    onValueChange={value => {global.motivationLevel = value; setMotivationLevel(value)}}
                     />
-                    <Text style={styles.subtitle}>{descriptions[props.currentLevel]}</Text>
+                    <Text style={styles.subtitle}>{descriptions[motivationLevel]}</Text>
                     <Pressable
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => props.visibilityHandler(!props.visibility)}

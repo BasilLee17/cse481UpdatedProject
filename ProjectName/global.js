@@ -1,0 +1,1 @@
+global.motivationLevel = 1;
