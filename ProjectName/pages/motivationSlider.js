@@ -42,9 +42,12 @@ export default function MotivationSlider (props) {
             },
             shadowOpacity: 0.25,
             shadowRadius: 4,
-            elevation: 5
+            elevation: 5,
           },
           button: {
+            position: 'absolute',
+            alignSelf: 'center',
+            bottom: 10,
             borderRadius: 20,
             padding: 10,
             elevation: 2,
@@ -62,9 +65,24 @@ export default function MotivationSlider (props) {
             marginBottom: 15,
             textAlign: "center"
           },
+          questionIcon: {
+            position: 'absolute',
+            bottom: 0,
+            left: -25,
+            paddingHorizontal: 5,
+            borderRadius: 20,
+            backgroundColor: "skyblue",
+          },
+          moreInfo: {
+            textAlign: 'center',
+            fontSize: 16,
+            letterSpacing: 0.25,
+            color: 'black',
+        },
     });
 
     const [motivationLevel, setMotivationLevel] = useState(global.motivationLevel);
+    const [moreInfo, setMoreInfo] = useState(false);
 
     return (
         <View style={styles.container}>
@@ -77,6 +95,7 @@ export default function MotivationSlider (props) {
                 }}
             >
                 <View style={styles.modalView}>
+                  <View style={{ height : 200 }}>
                     <Text style={styles.subtitle}> My Motivation Level: {motivationLevel}</Text>
                     <Slider style={styles.slider}
                     step={1}
@@ -94,6 +113,20 @@ export default function MotivationSlider (props) {
                     >
                     <Text style={styles.textStyle}>Close</Text>
                     </Pressable>
+                  </View>
+                  <View style={{ flexDirection: "row" }}>
+                    <Pressable
+                      style={styles.questionIcon}
+                      onPress={() => setMoreInfo(!moreInfo)}
+                    >
+                      <Text style={styles.textStyle}>?</Text>
+                    </Pressable>
+                    <Text style={styles.moreInfo}>What is the use of it?</Text>
+                  </View>
+                    { moreInfo? 
+                      <View><Text style={styles.moreInfo}>{"\n"}This will be used to decide what alternatives to suggest to you. The more motivated you are, the more suggestions you’ll see which would take some getting used to, like replacing meat with tofu for example.</Text></View>
+                      : null
+                    }
                 </View>
             </Modal>
       </View>
