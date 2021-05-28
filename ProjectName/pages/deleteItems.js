@@ -33,6 +33,7 @@ export default function DeleteItems({ buttonContent, deleteItemsHandler }) {
             color: 'white',
           },
           modalView: {
+            top: '70%',
             margin: 20,
             backgroundColor: "white",
             borderRadius: 20,
@@ -45,7 +46,7 @@ export default function DeleteItems({ buttonContent, deleteItemsHandler }) {
             },
             shadowOpacity: 0.25,
             shadowRadius: 4,
-            elevation: 5
+            elevation: 5,
           },
           textStyle: {
             color: "white",

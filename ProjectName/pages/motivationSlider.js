@@ -43,6 +43,8 @@ export default function MotivationSlider (props) {
             shadowOpacity: 0.25,
             shadowRadius: 4,
             elevation: 5,
+            position: 'absolute',
+            top: '15%',
           },
           button: {
             position: 'absolute',
