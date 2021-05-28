@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, Linking, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Linking, View, Pressable, TouchableOpacity } from 'react-native';
 import Checkbox from './checkbox';
 
 export default function Goal (props) {
@@ -33,17 +33,32 @@ export default function Goal (props) {
             borderWidth: 1,
             borderRadius: 10,
             borderColor: '#28965A'
-        }
+        },
+        infoIcon: {
+          position: 'absolute',
+          right: '3%',
+          paddingHorizontal: 8,
+          borderRadius: 20,
+          backgroundColor: "skyblue",
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginVertical: 20,
+        },
+        infoIconText: {
+          color: "white",
+          fontWeight: "bold",
+          textAlign: "center"
+        },
     });
 
       const [checked, setChecked] = useState(false);
 
       const GoalText = (props) => {
         return (
-          <View>
+          <View style={{ width: '97%' }}>
           <Text style={styles.title}>{props.goal.rec}</Text>
               {
-                props.showMoreInfo ? 
+                showMoreInfo ? 
                 <View>
                   <Text style={styles.description}>{props.goal.Whychange}</Text>
                   <TouchableOpacity onPress={() => Linking.openURL(props.goal.link)}>
@@ -71,9 +86,17 @@ export default function Goal (props) {
             }}>
             <Checkbox checked={checked}/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{setshowMoreInfo(!showMoreInfo)}}>
-            <GoalText goal={props.goal} showMoreInfo={showMoreInfo}/>
-          </TouchableOpacity>
+            
+            <View style={{ flexDirection: "row" }}>
+                    <GoalText goal={props.goal}/>
+                    
+                  </View>
+                  <Pressable
+                      style={styles.infoIcon}
+                      onPress={() => setshowMoreInfo(!showMoreInfo)}
+                    >
+                      <Text style={styles.infoIconText}>i</Text>
+                    </Pressable>
         </View>
     )
 
