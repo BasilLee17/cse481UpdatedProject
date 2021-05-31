@@ -25,7 +25,7 @@ export default function Goal (props) {
         },
         container: {
             padding:10,
-            paddingRight: 20,
+            paddingRight: 23,
             margin:5,
             backgroundColor: '#d5ebd8',
             flexDirection: 'row',
