@@ -10,6 +10,7 @@ export default function Goal (props) {
             fontSize: 20,
             fontWeight: 'bold',
             marginHorizontal: 10,
+            marginRight: 15,
 
         },
         description: {
@@ -25,7 +26,7 @@ export default function Goal (props) {
         },
         container: {
             padding:10,
-            paddingRight: 23,
+            paddingRight: 20,
             margin:5,
             backgroundColor: '#d5ebd8',
             flexDirection: 'row',
