@@ -7,13 +7,13 @@ import Header from './header';
 import Item from './item';
 import SubmitGroceryList from './submitGroceryList';
 import DeleteItems from './deleteItems';
+import {openDatabase} from 'react-native-sqlite-storage';
+
+// Connection to access the pre-populated user_db.db
+const db = openDatabase({name: 'db.db', createFromLocation: 1});
 
 export default function GroceryListScreen ({ route, navigation }) {
     const [list, setList] = useState([
-        {text: 'almonds', tags: ['organic'], key: 1},
-        {text: 'bread', tags: [], key: 2},
-        {text: 'milk', tags: [], key: 3},
-        {text: 'pork', tags: [], key: 4}
     ]);
 
     const[selected, setSelected] = useState ([
@@ -36,7 +36,28 @@ export default function GroceryListScreen ({ route, navigation }) {
         }
     });
 
+    let [flatListItems, setFlatListItems] = useState([]);
+
     const submitHandler = (itemName, itemTags) => {
+        console.log(itemName);
+        db.transaction((tx) => {
+          tx.executeSql('INSERT INTO list (food, selected) VALUES (?, 0)',
+          [itemName],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
+        db.transaction((tx) => {
+          tx.executeSql('SELECT * FROM list',
+          [],
+          (tx, results) => {
+            var temp = [];
+            for (let i = 0; i < results.rows.length; ++i)
+              temp.push(results.rows.item(i));
+            setFlatListItems(temp);
+          });
+        });
+        console.log(JSON.stringify(flatListItems));
         console.log(itemTags);
         setList((prevList) => {
             return [
@@ -45,13 +66,27 @@ export default function GroceryListScreen ({ route, navigation }) {
         })
     };
 
-    const deleteHandler = (itemKey) => {
+    const deleteHandler = (itemKey, itemName) => {
+        db.transaction((tx) => {
+          tx.executeSql('DELETE FROM list WHERE food=?',
+          [itemName],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
         setList((prevList) => {
             return prevList.filter(current => current.key != itemKey);
         });
     }
 
-    const selectItemHandler = (itemKey) => {
+    const selectItemHandler = (itemKey, itemName) => {
+        db.transaction((tx) => {
+          tx.executeSql('UPDATE list SET selected=1 WHERE food=?',
+          [itemName],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
         setSelected((prevSelected) => {
             return [
                 {key: itemKey,},
@@ -59,7 +94,14 @@ export default function GroceryListScreen ({ route, navigation }) {
         });
     };
 
-    const unselectItemHandler = (itemKey) => {
+    const unselectItemHandler = (itemKey, itemName) => {
+        db.transaction((tx) => {
+          tx.executeSql('UPDATE list SET selected=0 WHERE food=?',
+          [itemName],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
         setSelected((prevSelected) => {
             return prevSelected.filter(current => current.key != itemKey);
         });
@@ -67,12 +109,18 @@ export default function GroceryListScreen ({ route, navigation }) {
 
     const submitGroceryListHandler = () => {
         let selectedKeys = selected.map(a => a.key);
-        // TODO: is there a way to pass items???
         let unselectedItems = list.filter(current => !(selectedKeys.includes(current.key)));
         navigation.navigate("Goals", unselectedItems);
     };
 
     const deleteCheckedItemsHandler = () => {
+        db.transaction((tx) => {
+          tx.executeSql('DELETE FROM list WHERE selected=1',
+          [],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
         let selectedKeys = selected.map(a => a.key);
         setList((prevList) => {
             return prevList.filter(current => !(selectedKeys.includes(current.key)));
@@ -80,6 +128,13 @@ export default function GroceryListScreen ({ route, navigation }) {
     };
 
     const deleteAllItemsHandler = () => {
+        db.transaction((tx) => {
+          tx.executeSql('DELETE FROM list',
+          [],
+          (tx, results) => {
+          console.log("Results", results.rowsAffected);
+          });
+        });
         let selectedKeys = selected.map(a => a.key);
         setList((prevList) => {
             return [];
@@ -95,7 +150,7 @@ export default function GroceryListScreen ({ route, navigation }) {
                     style={styles.list}
                     data={list}
                     renderItem={({item}) => (
-                    <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}
+                    <Item item={item} deleteHandler={deleteHandler} selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}
                     ListFooterComponent={() => 
                     <View style={{ flexDirection: "row" }}>
                     <DeleteItems buttonContent='Clear Checked Items' deleteItemsHandler={ deleteCheckedItemsHandler }/>

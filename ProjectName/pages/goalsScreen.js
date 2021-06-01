@@ -5,13 +5,13 @@
 import React, {useState, useEffect} from 'react';
 import {FlatList, StyleSheet, Text, View, Pressable, Image} from 'react-native';
 import Header from './header';
-import {openDatabase} from 'react-native-sqlite-storage';
 import SubmitGoals from './submitGoals';
 import Goal from './goal';
 import MotivationSlider from './motivationSlider';
+import {openDatabase} from 'react-native-sqlite-storage';
 
-// Connction to access the pre-populated user_db.db
-const db = openDatabase({name: 'test2.db', createFromLocation: 1});
+// Connection to access the pre-populated user_db.db
+const db = openDatabase({name: 'db.db', createFromLocation: 1});
 
 const GoalsScreen = ({route, navigation}) => {
   let [flatListItems, setFlatListItems] = useState([]);
@@ -20,7 +20,7 @@ const GoalsScreen = ({route, navigation}) => {
 
   useEffect(() => {
     db.transaction((tx) => {
-      tx.executeSql('SELECT * FROM suggestions WHERE foodfrom="beef" OR foodfrom="lamb" OR foodfrom="olive oil"',
+      tx.executeSql('SELECT suggestions.id, suggestions.rec, suggestions.Whychange, suggestions.link FROM suggestions INNER JOIN list ON suggestions.foodfrom=list.food WHERE selected=0',
       [],
       (tx, results) => {
         var temp = [];

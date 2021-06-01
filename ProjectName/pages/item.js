@@ -58,7 +58,7 @@ export default function Item (props) {
             {
               text: 'Delete',
               backgroundColor: 'red',
-              onPress: () => { props.deleteHandler(props.item.key) },
+              onPress: () => { props.deleteHandler(props.item.key, props.item.text) },
             }
     ]
 
@@ -70,9 +70,9 @@ export default function Item (props) {
         <View style={[styles.container, checked? {backgroundColor: 'oldlace' ,}: {backgroundColor: '#EFE7E6'}]}>
           <TouchableOpacity onPress={()=>{
             if (!checked) {
-              props.selectHandler(props.item.key);
+              props.selectHandler(props.item.key, props.item.text);
             } else {
-              props.unselectHandler(props.item.key);
+              props.unselectHandler(props.item.key, props.item.text);
             }
             setChecked(!checked)
             }}>
