@@ -57,18 +57,19 @@ export default function AddItem({ submitHandler }) {
             justifyContent: 'flex-start',
           },
           tag: {
-            backgroundColor: 'skyblue',
-            borderRadius: 10,
-            padding: 5,
+            backgroundColor: '#82E098',
+            borderRadius: 5,
+            paddingVertical: 3,
+            paddingHorizontal: 10,
             marginBottom: 5,
             marginRight: 5,
           },
           textTag: {
-            color: 'white',
-            fontWeight: 'bold',
+            color: 'black',
+            //fontWeight: 'bold',
           },
           tagInput: {
-            backgroundColor: '#D6D6D6',
+            backgroundColor: '#CFCFCF',
             color: '#606060',
             fontWeight: 'bold',
           },
@@ -104,7 +105,7 @@ export default function AddItem({ submitHandler }) {
                     containerStyle={styles.tagContainer}
                     initialText={tagText}
                     textInputProps={{
-                        placeholderTextColor: 'white',
+                        placeholderTextColor: '#474747',
                         placeholder: 'Enter your tag + space! Or tap a tag to delete.',
                     }}
                     inputStyle={styles.tagInput}

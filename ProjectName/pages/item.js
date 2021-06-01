@@ -49,7 +49,7 @@ export default function Item (props) {
           shadowColor: 'green',
           backgroundColor: 'white',
           borderColor: 'white',
-          marginLeft: 15,
+          marginLeft: 10,
         }
         
     });
@@ -67,7 +67,7 @@ export default function Item (props) {
 
     return (
     <Swipeout style={styles.swipeout} right={swipeoutBtns}>
-        <View style={[styles.container, checked? {backgroundColor: 'oldlace' ,}: {backgroundColor: '#EFE7E6'}]}>
+        <View style={[styles.container, checked? {backgroundColor: '#CFCFCF' ,}: {backgroundColor: '#EFE7E6'}]}>
           <TouchableOpacity onPress={()=>{
             if (!checked) {
               props.selectHandler(props.item.key, props.item.text);

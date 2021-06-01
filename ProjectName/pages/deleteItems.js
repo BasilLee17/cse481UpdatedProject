@@ -22,7 +22,7 @@ export default function DeleteItems({ buttonContent, deleteItemsHandler }) {
             elevation: 3,
             backgroundColor: '#28965A',
             width: 150,
-            marginHorizontal: 15,
+            marginHorizontal: 17,
           },
           text: {
             textAlign: 'center',
@@ -74,6 +74,12 @@ export default function DeleteItems({ buttonContent, deleteItemsHandler }) {
                         <Text style={styles.modalText}>Are you sure you want to {buttonContent.toLowerCase()}?</Text>
                         <View style={{ flexDirection: "row" }}> 
                         <Pressable
+                            style={[styles.button,  {backgroundColor: '#28965A'}]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                            >
+                            <Text style={styles.textStyle}>Cancel</Text>
+                        </Pressable>
+                        <Pressable
                             style={[styles.button, {backgroundColor: 'red'}]}
                             onPress={() => { 
                                 setModalVisible(!modalVisible);
@@ -82,12 +88,6 @@ export default function DeleteItems({ buttonContent, deleteItemsHandler }) {
                             }
                             >
                             <Text style={styles.textStyle}>Confirm</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button,  {backgroundColor: 'green'}]}
-                            onPress={() => setModalVisible(!modalVisible)}
-                            >
-                            <Text style={styles.textStyle}>Cancel</Text>
                         </Pressable>
                         </View>
                     </View>
