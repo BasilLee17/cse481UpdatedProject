@@ -106,7 +106,7 @@ export default function MotivationSlider (props) {
                     minimumTrackTintColor="green"
                     maximumTrackTintColor="grey"
                     value={global.motivationLevel}
-                    onValueChange={value => {global.motivationLevel = value; setMotivationLevel(value)}}
+                    onValueChange={value => {global.motivationLevel = value; setMotivationLevel(value); props.changeHandler(value);}}
                     />
                     <Text style={styles.subtitle}>{descriptions[motivationLevel]}</Text>
                     <Pressable
