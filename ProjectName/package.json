@@ -25,7 +25,8 @@
     "react-native-sqlite-storage": "^5.0.0",
     "react-native-swipeout": "^2.3.6",
     "react-native-tag-select": "^2.0.0",
-    "react-native-tags": "^2.2.0"
+    "react-native-tags": "^2.2.0",
+    "react-navigation": "^4.4.4"
   },
   "devDependencies": {
     "@babel/core": "7.14.3",
