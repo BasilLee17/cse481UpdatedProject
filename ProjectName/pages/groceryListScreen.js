@@ -10,7 +10,7 @@ import DeleteItems from './deleteItems';
 import {openDatabase} from 'react-native-sqlite-storage';
 
 // Connection to access the pre-populated user_db.db
-const db = openDatabase({name: 'datab.db', createFromLocation: 1});
+const db = openDatabase({name: 'dbNewest.db', createFromLocation: 1});
 
 export default function GroceryListScreen ({ route, navigation }) {
     const [list, setList] = useState([]);
