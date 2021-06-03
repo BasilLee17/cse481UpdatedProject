@@ -152,7 +152,7 @@ export default function GroceryListScreen ({ route, navigation }) {
                     renderItem={({item}) => (
                     <Item item={item} deleteHandler={deleteHandler} selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}
                     ListFooterComponent={() => 
-                    <View style={{ flexDirection: "row" }}>
+                    <View style={{ flexDirection: "row", marginTop: 10 }}>
                     <DeleteItems buttonContent='Clear Checked Items' deleteItemsHandler={ deleteCheckedItemsHandler }/>
                     <DeleteItems buttonContent='Clear All' deleteItemsHandler={ deleteAllItemsHandler }/>
                     </View>
