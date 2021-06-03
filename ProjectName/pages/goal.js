@@ -79,9 +79,9 @@ export default function Goal (props) {
         <View style={styles.container}>          
           <TouchableOpacity onPress={()=>{
             if (!checked) {
-              props.selectHandler(props.goal.key);
+              props.selectHandler(props.goal.id);
             } else {
-              props.unselectHandler(props.goal.key);
+              props.unselectHandler(props.goal.id);
             }
             setChecked(!checked)
             }}>

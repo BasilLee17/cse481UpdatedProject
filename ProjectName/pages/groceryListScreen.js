@@ -1,6 +1,6 @@
 // https://www.youtube.com/watch?v=uLHFPt9B2Os
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-native';
 import AddItem from './addItem';
 import Header from './header';
@@ -13,8 +13,24 @@ import {openDatabase} from 'react-native-sqlite-storage';
 const db = openDatabase({name: 'db.db', createFromLocation: 1});
 
 export default function GroceryListScreen ({ route, navigation }) {
-    const [list, setList] = useState([
-    ]);
+    const [list, setList] = useState([]);
+
+    const [flatListItems, setFlatListItems] = useState([]);
+
+    /*useEffect((x) => {
+        db.transaction((tx) => {
+          tx.executeSql('SELECT * FROM list',
+          [],
+          (tx, results) => {
+            var temp = [];
+            for (let i = 0; i < results.rows.length; ++i)
+              temp.push(results.rows.item(i));
+            if (temp != []) {
+                setFlatListItems(temp);
+            }
+          });
+        });
+      }, []);*/
 
     const[selected, setSelected] = useState ([
         {key: -1}
@@ -36,8 +52,6 @@ export default function GroceryListScreen ({ route, navigation }) {
         }
     });
 
-    let [flatListItems, setFlatListItems] = useState([]);
-
     const submitHandler = (itemName, itemTags) => {
         console.log(itemName);
         db.transaction((tx) => {
@@ -54,9 +68,12 @@ export default function GroceryListScreen ({ route, navigation }) {
             var temp = [];
             for (let i = 0; i < results.rows.length; ++i)
               temp.push(results.rows.item(i));
-            setFlatListItems(temp);
+            if (temp != []) {
+                setFlatListItems(temp);
+            }
           });
         });
+
         console.log(JSON.stringify(flatListItems));
         console.log(itemTags);
         setList((prevList) => {
@@ -141,11 +158,25 @@ export default function GroceryListScreen ({ route, navigation }) {
         });
     };
 
+    /*function changeViewHandler (text) {
+        console.log("here");
+        db.transaction((tx) => {
+          tx.executeSql('SELECT id, food, tags, selected FROM list',
+          [],
+          (tx, results) => {
+            var temp = [];
+            for (let i = 0; i < results.rows.length; ++i)
+              temp.push(results.rows.item(i));
+            setFlatListItems(temp);
+          });
+        });
+    };*/
+
     return (
         <View style={styles.container}>
             <Header headerTitle="My Grocery List" />
             <View style={styles.content}>
-                <AddItem submitHandler={ submitHandler } />
+                <AddItem submitHandler={ submitHandler } /*onChange={ changeViewHandler }*/ />
                 <FlatList 
                     style={styles.list}
                     data={list}

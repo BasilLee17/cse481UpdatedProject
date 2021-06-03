@@ -96,9 +96,18 @@ const GoalsScreen = ({route, navigation}) => {
     };
 
     const submitGoalsHandler = () => {
-            let selectedKeys = selected.map(a => a.key);
-            let selectedGoals = flatListItems.filter(current => (selectedKeys.includes(current.key)));
-            navigation.navigate("Grocery List", selectedGoals);
+        let selectedKeys = selected.map(a => a.key);
+        console.log(selectedKeys);
+        selectedKeys.forEach((key) => {
+            db.transaction((tx) => {
+              tx.executeSql('UPDATE list SET food=(SELECT foodto FROM suggestions WHERE id=?) WHERE food=(SELECT foodfrom FROM suggestions WHERE id=?)',
+              [key, key],
+              (tx, results) => {
+              });
+            });
+        });
+        let selectedGoals = flatListItems.filter(current => (selectedKeys.includes(current.key)));
+        navigation.navigate("Grocery List", selectedGoals);
     };
 
 
