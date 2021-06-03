@@ -50,6 +50,11 @@ export default function Goal (props) {
           fontWeight: "bold",
           textAlign: "center"
         },
+        hide: {
+          height: 0,
+          width: 0,
+          opacity: 0
+        }
     });
 
       const [checked, setChecked] = useState(false);
@@ -77,7 +82,7 @@ export default function Goal (props) {
 
     return (
         <View style={styles.container}>          
-          <TouchableOpacity onPress={()=>{
+          <TouchableOpacity style={styles.hide} onPress={()=>{
             if (!checked) {
               props.selectHandler(props.goal.id);
             } else {
@@ -85,7 +90,7 @@ export default function Goal (props) {
             }
             setChecked(!checked)
             }}>
-            <Checkbox checked={checked}/>
+            <Checkbox checked={checked} style={styles.hide}/>
           </TouchableOpacity>
             
             <View style={{ flexDirection: "row" }}>
