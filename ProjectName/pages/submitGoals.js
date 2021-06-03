@@ -34,7 +34,7 @@ export default function SubmitGoal({ submitHandler }) {
     return (
 
         <Pressable style={styles.button} onPress={submitHandler}>
-            <Text style={styles.text}>Submit My Sustainable Alternatives!</Text>
+            <Text style={styles.text}>Submit Intended Changes!</Text>
         </Pressable>
 
     )
