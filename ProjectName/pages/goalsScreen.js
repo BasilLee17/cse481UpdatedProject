@@ -11,12 +11,12 @@ import MotivationSlider from './motivationSlider';
 import {openDatabase} from 'react-native-sqlite-storage';
 
 // Connection to access the pre-populated user_db.db
-const db = openDatabase({name: 'db.db', createFromLocation: 1});
+const db = openDatabase({name: 'datab.db', createFromLocation: 1});
 
 const GoalsScreen = ({route, navigation}) => {
   let [flatListItems, setFlatListItems] = useState([]);
 
-  const {unselectedItems} = route.params;
+  //const {unselectedItems} = route.params;
 
   useEffect((x) => {
     db.transaction((tx) => {
