@@ -2,7 +2,7 @@
 // https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native
 // Screen to view all the user*/
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {FlatList, StyleSheet, Text, View, Pressable, Image} from 'react-native';
 import Header from './header';
 import SubmitGoals from './submitGoals';
@@ -18,10 +18,10 @@ const GoalsScreen = ({route, navigation}) => {
 
   const {unselectedItems} = route.params;
 
-  useEffect(() => {
+  useEffect((x) => {
     db.transaction((tx) => {
-      tx.executeSql('SELECT suggestions.id, suggestions.rec, suggestions.Whychange, suggestions.link FROM suggestions INNER JOIN list ON suggestions.foodfrom=list.food WHERE selected=0',
-      [],
+      tx.executeSql('SELECT suggestions.id, suggestions.rec, suggestions.Whychange, suggestions.link FROM suggestions INNER JOIN list ON suggestions.foodfrom=list.food WHERE selected=0 AND motivationlevel<=?',
+      [motivationLevel],
       (tx, results) => {
         var temp = [];
         for (let i = 0; i < results.rows.length; ++i)
@@ -103,10 +103,25 @@ const GoalsScreen = ({route, navigation}) => {
 
 
     // for motivation level:
-    const[motivationLevel, setMotivationLevel] = useState (1)
+    const[motivationLevel, setMotivationLevel] = useState (global.motivationLevel)
     // todo
     const [modalVisible, setModalVisible] = useState(false);
 
+
+    function changeLevelHandler (value) {
+      setMotivationLevel(value);
+      //forceUpdate();
+      db.transaction((tx) => {
+        tx.executeSql('SELECT suggestions.id, suggestions.rec, suggestions.Whychange, suggestions.link FROM suggestions INNER JOIN list ON suggestions.foodfrom=list.food WHERE selected=0 AND motivationlevel<=?',
+        [global.motivationLevel],
+        (tx, results) => {
+          var temp = [];
+          for (let i = 0; i < results.rows.length; ++i)
+            temp.push(results.rows.item(i));
+          setFlatListItems(temp);
+        });
+      });
+  };
 
   return (
       <View style={styles.container}>
@@ -118,7 +133,7 @@ const GoalsScreen = ({route, navigation}) => {
           <Image style={styles.icon}
                  source={require('../img/settings.png')}/>
         </Pressable>
-        <MotivationSlider currentLevel={motivationLevel} changeHandler={ setMotivationLevel } visibility={modalVisible} visibilityHandler={ setModalVisible }/>
+        <MotivationSlider currentLevel={motivationLevel} changeHandler={ changeLevelHandler } visibility={modalVisible} visibilityHandler={ setModalVisible }/>
         <View style={styles.content}>
           <FlatList style={styles.list}
             data={flatListItems}
