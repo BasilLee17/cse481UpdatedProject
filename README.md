@@ -1,4 +1,5 @@
 To download our app on an Android phone or an Android emulator, follow the instructions listed below, or visit <a href="https://docs.google.com/document/d/14MQqVpUW-rmDfjDZIqimyLk1auEEtzJ3eMf7QnkJm5s/edit?usp=sharing">this page</a> to view these instructions with some pictures to aid you.
+
 0. On your Android device, make sure you are signed into Google, so that you can access Drive.
 1. Navigate to <em>Settings > Apps & Notifications</em>.
 2. From here, navigate to the <em>Advanced dropdown</em>, and then select the <em>Special app access</em>.
