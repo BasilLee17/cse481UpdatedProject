@@ -1,3 +1,7 @@
+/*
+This component represents a single suggestion, which was originally named a goal! It includes
+the functionality to click on the i on the right to uncollapse the information about the suggestion.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, Linking, View, Pressable, TouchableOpacity } from 'react-native';
 import Checkbox from './checkbox';

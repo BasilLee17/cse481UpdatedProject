@@ -1,6 +1,12 @@
+/*
+This is the suggestions screen, which was originally named "Goals"! It populates itself
+with suggestions from our information database based on the items in the user's grocery list.
+It also allows them to navigate back to the grocery list, as well as set their motivation level.
+*/
+
 // Pre-Populated SQLite Database in React Native
 // https://aboutreact.com/example-of-pre-populated-sqlite-database-in-react-native
-// Screen to view all the user*/
+// Screen to view all the user
 
 import React, {useState, useEffect, useCallback} from 'react';
 import {FlatList, StyleSheet, Text, View, Pressable, Image} from 'react-native';

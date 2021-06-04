@@ -1,3 +1,8 @@
+/*
+This file is our main app; it's what's loaded when you first open the app, which loads
+the grocery list screen.
+*/
+
 // Example: Example of SQLite Database in React Native
 // https://aboutreact.com/example-of-sqlite-database-in-react-native
 import 'react-native-gesture-handler';

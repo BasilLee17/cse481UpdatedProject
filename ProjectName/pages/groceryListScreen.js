@@ -1,5 +1,10 @@
-// https://www.youtube.com/watch?v=uLHFPt9B2Os
+/*
+This component is the grocery list, which contains the functionality to add items (with tags),
+delete single items, check off items, clear checked items, and clear all items. It also allows
+you to navigate to the suggestions screen.
+*/
 
+// https://www.youtube.com/watch?v=uLHFPt9B2Os
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-native';
 import AddItem from './addItem';

@@ -1,3 +1,7 @@
+/*
+This component is the motivation slider for how interested in sustainability the user is, going from
+bare minimum effort to full dedication.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Modal, Pressable} from 'react-native';
 import Slider from '@react-native-community/slider';

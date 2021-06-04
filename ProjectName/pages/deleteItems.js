@@ -1,3 +1,8 @@
+/*
+This component allows the user to delete multiple items from their shopping list at once,
+as well as clearing their shopping list entirely, with a pop-up confirming their decision.
+*/
+
 import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, View, Modal } from 'react-native';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';

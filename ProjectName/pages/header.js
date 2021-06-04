@@ -1,3 +1,6 @@
+/*
+This component is a header, used for each page to give the title of this page.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 

@@ -1,3 +1,8 @@
+/*
+This component is the button to submit the selected alternatives so that the grocery list updates.
+It's currently unused, due to time restrictions not allowing us to fully get the functionality
+working.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, Pressable, View, Button } from 'react-native';
 

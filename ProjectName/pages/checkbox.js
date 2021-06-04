@@ -1,3 +1,6 @@
+/*
+This component is a simple checkbox, used in our grocery list screen!
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 

@@ -1,3 +1,6 @@
+/*
+This component is a single item in the grocery list, containing the item name and the tags.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
 // https://www.npmjs.com/package/react-native-tag-select

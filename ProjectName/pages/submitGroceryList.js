@@ -1,3 +1,6 @@
+/*
+This component is the button used to submit the grocery list to the suggestions page.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Pressable, Text, View, Button } from 'react-native';
 import { sub } from 'react-native-reanimated';

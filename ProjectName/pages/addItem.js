@@ -1,3 +1,7 @@
+/*
+This is the component that allows users to add items to the grocery list, including the tags for
+the item.
+*/
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Pressable, TouchableOpacity } from 'react-native';
 import Tags from "react-native-tags";
